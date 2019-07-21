@@ -3,6 +3,7 @@ package main
 import (
     "context"
 	"fmt"
+	"io"
 	"net/http"
 	"encoding/json"
 	"log"
@@ -11,12 +12,17 @@ import (
 
 	"github.com/olivere/elastic"
 	"github.com/pborman/uuid"
+
+	"cloud.google.com/go/storage"
 )
 
 const (
     POST_INDEX = "post"
     POST_TYPE = "post"
     DISTANCE = "200km"
+    ES_URL = "..."
+
+    BUCKET_NAME = "..."
 )
 
 type Location struct {
@@ -28,6 +34,7 @@ type Post struct {
 	User string `json:"user"`
 	Message string `json:"message"`
 	Location Location `json:"location"`
+	Url string `json:"url"`
 }
 
 func main() {
@@ -93,6 +100,42 @@ func main() {
 	http.Handle("/", r)
 	log.Fatal(http.ListenAndServe(":8080", nil))
 
+}
+
+// Save an image to GCS.
+func saveToGCS(ctx context.Context, r io.Reader, bucket, name string) (*storage.ObjectHandle, *storage.ObjectAttrs, error) {
+	// Creates a client.
+	client, err := storage.NewClient(ctx)
+	if err != nil {
+		log.Fatalf("Failed to create client: %v", err)
+		return nil, nil, err
+	}
+	defer client.Close()
+
+	// Sets the name for the new bucket.
+	bh  := client.Bucket(bucket)
+	// Next check if the bucket exists, 看能否获取bucket.attribute 来看bucket是否存在
+	if _, err = bh.Attrs(ctx); err != nil {
+		return nil, nil, err
+	}
+
+	obj:= bh.Object(name)
+	w:= obj.NewWriter(ctx)		//a writer
+	if _, err = io.Copy(w, r); err!=nil{
+		return nil, nil, err
+	}
+
+	if err := w.Close(); err!=nil{
+		return nil, nil, err
+	}
+	//ACL : 管理文件访问权限 -- access control list
+	if err:= obj.ACL().Set(ctx, storage.AllUsers, storage.RoleReader); err!=nil {
+		return nil, nil, err
+	}
+
+	attrs, err := obj.Attrs(ctx)
+	fmt.Printf("Post is saved to GCS:%s\n", attrs.MediaLink)
+	return obj, attrs, err
 }
 
 // Save a post to ElasticSearch
