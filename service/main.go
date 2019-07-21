@@ -12,6 +12,7 @@ import (
 
 	"github.com/olivere/elastic"
 	"github.com/pborman/uuid"
+	"github.com/gorilla/mux"
 
 	"cloud.google.com/go/storage"
 	"cloud.google.com/go/bigtable"
@@ -193,6 +194,79 @@ func createIndexIfNotExist() {
     client, err := elastic.NewClient(elastic.SetURL()
 }
 
+func handlerPost(w http.ResponseWriter, r *http.Request) {
+	//handle cors
+	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Headers", "Content-Type,Authorization")
+
+	if r.Method != "POST" {
+		return
+	}
+
+	user := r.Context().Value("user")  //  key  "user": jwt will add it to context when you login
+	if user == nil {
+		m := fmt.Sprintf("Unable to find user in context")
+		fmt.Println(m)
+		http.Error(w, m, http.StatusBadRequest)
+		return
+	}
+	claims := user.(*jwt.Token).Claims
+	username := claims.(jwt.MapClaims)["username"]
+
+	// 32 << 20 is the maxMemory param for ParseMultipartForm, equals to 32MB (1MB = 1024 * 1024 bytes = 2^20 bytes)
+	// After you call ParseMultipartForm, the file will be saved in the server memory with maxMemory size.
+	// If the file size is larger than maxMemory, the rest of the data will be saved in a system temporary file.
+	r.ParseMultipartForm(32 << 20)
+
+	// Parse from form data.
+	fmt.Printf("Received one post request %s\n", r.FormValue("message"))
+
+	lat, _ := strconv.ParseFloat(r.FormValue("lat"), 64)
+	lon, _ := strconv.ParseFloat(r.FormValue("lon"), 64)
+	p := &Post{
+		User:    username.(string),
+		Message: r.FormValue("message"),
+		Location: Location{
+			Lat: lat,
+			Lon: lon,
+		},
+	}
+
+	id := uuid.New()
+
+	file, _, err := r.FormFile("image")
+	if err != nil {
+		http.Error(w, "Image is not available", http.StatusInternalServerError)
+		fmt.Printf("Image is not available %v.\n", err)
+		return
+	}
+
+	ctx := context.Background()
+
+	defer file.Close()
+
+	// replace it with your real bucket name.
+	_, attrs, err := saveToGCS(ctx, file, GCS_BUCKET, id)
+	if err != nil {
+		http.Error(w, "GCS is not setup", http.StatusInternalServerError)
+		fmt.Printf("GCS is not setup %v\n", err)
+		return
+	}
+
+	// Update the media link after saving to GCS.
+	p.Url = attrs.MediaLink
+
+	// Save to ES.
+	go saveToES(p, id)
+
+	// Save to BigTable.
+	if ENABLE_BIGTABLE {
+		go saveToBigTable(p, id)
+	}
+
+}
+
 func handlerSearch(w http.ResponseWriter, r *http.Request, rs_client *redis.Client) {
 	fmt.Println("Received one request for search")
 	// handle cors
@@ -290,77 +364,3 @@ func handlerSearch(w http.ResponseWriter, r *http.Request, rs_client *redis.Clie
 
 	w.Write(js)
 }
-
-func handlerPost(w http.ResponseWriter, r *http.Request) {
-	//handle cors
-	w.Header().Set("Content-Type", "application/json")
-	w.Header().Set("Access-Control-Allow-Origin", "*")
-	w.Header().Set("Access-Control-Allow-Headers", "Content-Type,Authorization")
-
-	if r.Method != "POST" {
-		return
-	}
-
-	user := r.Context().Value("user")  //  key  "user": jwt will add it to context when you login
-	if user == nil {
-		m := fmt.Sprintf("Unable to find user in context")
-		fmt.Println(m)
-		http.Error(w, m, http.StatusBadRequest)
-		return
-	}
-	claims := user.(*jwt.Token).Claims
-	username := claims.(jwt.MapClaims)["username"]
-
-	// 32 << 20 is the maxMemory param for ParseMultipartForm, equals to 32MB (1MB = 1024 * 1024 bytes = 2^20 bytes)
-	// After you call ParseMultipartForm, the file will be saved in the server memory with maxMemory size.
-	// If the file size is larger than maxMemory, the rest of the data will be saved in a system temporary file.
-	r.ParseMultipartForm(32 << 20)
-
-	// Parse from form data.
-	fmt.Printf("Received one post request %s\n", r.FormValue("message"))
-
-	lat, _ := strconv.ParseFloat(r.FormValue("lat"), 64)
-	lon, _ := strconv.ParseFloat(r.FormValue("lon"), 64)
-	p := &Post{
-		User:    username.(string),
-		Message: r.FormValue("message"),
-		Location: Location{
-			Lat: lat,
-			Lon: lon,
-		},
-	}
-
-	id := uuid.New()
-
-	file, _, err := r.FormFile("image")
-	if err != nil {
-		http.Error(w, "Image is not available", http.StatusInternalServerError)
-		fmt.Printf("Image is not available %v.\n", err)
-		return
-	}
-
-	ctx := context.Background()
-
-	defer file.Close()
-
-	// replace it with your real bucket name.
-	_, attrs, err := saveToGCS(ctx, file, GCS_BUCKET, id)
-	if err != nil {
-		http.Error(w, "GCS is not setup", http.StatusInternalServerError)
-		fmt.Printf("GCS is not setup %v\n", err)
-		return
-	}
-
-	// Update the media link after saving to GCS.
-	p.Url = attrs.MediaLink
-
-	// Save to ES.
-	go saveToES(p, id)
-
-	// Save to BigTable.
-	if ENABLE_BIGTABLE {
-		go saveToBigTable(p, id)
-	}
-
-}
-
