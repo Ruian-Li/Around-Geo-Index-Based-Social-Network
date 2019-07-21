@@ -40,7 +40,6 @@ const (
 	API_PREFIX = "/api/v1"
 )
 
-
 type Location struct {
 	Lat float64 `json:"lat"`
 	Lon float64 `json:"lon"`
@@ -95,96 +94,6 @@ func main() {
 	// http.Handle("/", http.FileServer(http.Dir("build")))
 
 	log.Fatal(http.ListenAndServe(":8080", nil))
-}
-
-// Save an image to GCS.
-func saveToGCS(ctx context.Context, r io.Reader, bucket, name string) (*storage.ObjectHandle, *storage.ObjectAttrs, error) {
-	// Creates a client.
-	client, err := storage.NewClient(ctx)
-	if err != nil {
-		log.Fatalf("Failed to create client: %v", err)
-		return nil, nil, err
-	}
-	defer client.Close()
-
-	// Sets the name for the new bucket.
-	bh  := client.Bucket(bucket)
-	// Next check if the bucket exists, 看能否获取bucket.attribute 来看bucket是否存在
-	if _, err = bh.Attrs(ctx); err != nil {
-		return nil, nil, err
-	}
-
-	obj:= bh.Object(name)
-	w:= obj.NewWriter(ctx)		//a writer
-	if _, err = io.Copy(w, r); err!=nil{
-		return nil, nil, err
-	}
-
-	if err := w.Close(); err!=nil{
-		return nil, nil, err
-	}
-	//ACL : 管理文件访问权限 -- access control list
-	if err:= obj.ACL().Set(ctx, storage.AllUsers, storage.RoleReader); err!=nil {
-		return nil, nil, err
-	}
-
-	attrs, err := obj.Attrs(ctx)
-	fmt.Printf("Post is saved to GCS:%s\n", attrs.MediaLink)
-	return obj, attrs, err
-}
-
-// Save a post to ElasticSearch
-func saveToES(p *Post, id string) {
-	// Create a client
-	es_client, err := elastic.NewClient(elastic.SetURL(ES_URL), elastic.SetSniff(false))
-	if err != nil {
-		panic(err)
-		return
-	}
-
-	// Save it to index
-	_, err = es_client.Index().
-		Index(INDEX).
-		Type(TYPE).
-		Id(id).
-		BodyJson(p).
-		Refresh(true).
-		Do()
-	if err != nil {
-		panic(err)
-		return
-	}
-
-	fmt.Printf("Post is saved to Index: %s\n", p.Message)
-}
-
-// Save a post to BigTable
-func saveToBigTable(p *Post, id string) {
-	ctx := context.Background()
-	bt_client, err := bigtable.NewClient(ctx, BIGTABLE_PROJECT_ID, BT_INSTANCE)
-	if err != nil {
-		panic(err)
-		return
-	}
-
-	tbl := bt_client.Open("post")
-	mut := bigtable.NewMutation()
-	t := bigtable.Now()
-	mut.Set("post", "user", t, []byte(p.User))
-	mut.Set("post", "message", t, []byte(p.Message))
-	mut.Set("location", "lat", t, []byte(strconv.FormatFloat(p.Location.Lat, 'f', -1, 64)))
-	mut.Set("location", "lon", t, []byte(strconv.FormatFloat(p.Location.Lon, 'f', -1, 64)))
-
-	err = tbl.Apply(ctx, id, mut)
-	if err != nil {
-		panic(err)
-		return
-	}
-	fmt.Printf("Post is saved to BigTable: %s\n", p.Message)
-}
-
-func createIndexIfNotExist() {
-    client, err := elastic.NewClient(elastic.SetURL()
 }
 
 func handlerPost(w http.ResponseWriter, r *http.Request) {
@@ -263,16 +172,12 @@ func handlerPost(w http.ResponseWriter, r *http.Request) {
 
 }
 
-func handlerSearch(w http.ResponseWriter, r *http.Request, rs_client *redis.Client) {
+func handlerSearch(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("Received one request for search")
-	// handle cors
+
 	w.Header().Set("Content-Type", "application/json")
 	w.Header().Set("Access-Control-Allow-Origin", "*")
 	w.Header().Set("Access-Control-Allow-Headers", "Content-Type,Authorization")
-
-	if r.Method != "GET" {
-		return
-	}
 
 	lat, _ := strconv.ParseFloat(r.URL.Query().Get("lat"), 64)
 	lon, _ := strconv.ParseFloat(r.URL.Query().Get("lon"), 64)
@@ -282,83 +187,184 @@ func handlerSearch(w http.ResponseWriter, r *http.Request, rs_client *redis.Clie
 		ran = val + "km"
 	}
 
-	fmt.Printf( "Search received: %f %f %s\n", lat, lon, ran)
-
-	// add Redis cache
-	key := r.URL.Query().Get("lat") + ":" + r.URL.Query().Get("lon") + ":" + ran
-	if ENABLE_MEMCACHE {
-		val, err := rs_client.Get(key).Result()
-		if err != nil {
-			fmt.Printf("Redis cannot find the key %s as %v.\n", key, err)
-		} else {
-			fmt.Printf("Redis find the key %s.\n", key)
-			w.Write([]byte(val))
-			return
-		}
-	}
-
-	// Create a client
-	client, err := elastic.NewClient(elastic.SetURL(ES_URL), elastic.SetSniff(false))
+	posts, err := readFromES(lat, lon, ran)
 	if err != nil {
-		http.Error(w, "ES is not setup", http.StatusInternalServerError)
-		fmt.Printf("ES is not setup %v\n", err)
+		http.Error(w, "Failed to read post from ElasticSearch", http.StatusInternalServerError)
+		fmt.Printf("Failed to read post from ElasticSearch %v.\n", err)
 		return
 	}
 
-	// Define geo distance query as specified in
-	// https://www.elastic.co/guide/en/elasticsearch/reference/5.2/query-dsl-geo-distance-query.html
-	q := elastic.NewGeoDistanceQuery("location")
-	q = q.Distance(ran).Lat(lat).Lon(lon)
-
-	// Some delay may range from seconds to minutes. So if you don't get enough results. Try it later.
-	searchResult, err := client.Search().
-		Index(INDEX).
-		Query(q).
-		Pretty(true).
-		Do()
+	js, err := json.Marshal(posts)
 	if err != nil {
-		// Handle error
-		m := fmt.Sprintf("Failed to search ES %v", err)
-		fmt.Println(m)
-		http.Error(w, m, http.StatusInternalServerError)
+		http.Error(w, "Failed to parse posts into JSON format", http.StatusInternalServerError)
+		fmt.Printf("Failed to parse posts into JSON format %v.\n", err)
+		return
+	}
+
+	w.Write(js)
+}
+
+// Create Post index in ElasticSearch
+func createIndexIfNotExist() {
+	client, err := elastic.NewClient(elastic.SetURL(ES_URL), elastic.SetSniff(false))
+	if err != nil {
+		panic(err)
+	}
+
+	exists, err := client.IndexExists(POST_INDEX).Do(context.Background())
+	if err != nil {
+		panic(err)
+	}
+
+	if !exists {
+		mapping := `{
+            "mappings": {
+                "post": {
+                    "properties": {
+                        "location": {
+                            "type": "geo_point"
+                        }
+                    }
+                }
+            }
+        }`
+		_, err = client.CreateIndex(POST_INDEX).Body(mapping).Do(context.Background())
+		if err != nil {
+			panic(err)
+		}
+	}
+
+	exists, err = client.IndexExists(USER_INDEX).Do(context.Background())
+	if err != nil {
+		panic(err)
+	}
+
+	if !exists {
+		_, err = client.CreateIndex(USER_INDEX).Do(context.Background())
+		if err != nil {
+			panic(err)
+		}
+	}
+}
+
+// Save a post to ElasticSearch
+func saveToES(post *Post, id string) error {
+	client, err := elastic.NewClient(elastic.SetURL(ES_URL), elastic.SetSniff(false))
+	if err != nil {
+		return err
+	}
+
+	_, err = client.Index().
+		Index(POST_INDEX).
+		Type(POST_TYPE).
+		Id(id).
+		BodyJson(post).
+		Refresh("wait_for").
+		Do(context.Background())
+	if err != nil {
+		return err
+	}
+
+	fmt.Printf("Post is saved to index: %s.\n", post.Message)
+	return nil
+}
+
+// Read a post from ElasticSearch
+func readFromES(lat, lon float64, ran string) ([]Post, error) {
+	client, err := elastic.NewClient(elastic.SetURL(ES_URL), elastic.SetSniff(false))
+	if err != nil {
+		return nil, err
+	}
+
+	query := elastic.NewGeoDistanceQuery("location")
+	query = query.Distance(ran).Lat(lat).Lon(lon)
+
+	searchResult, err := client.Search().
+		Index(POST_INDEX).
+		Query(query).
+		Pretty(true).
+		Do(context.Background())
+	if err != nil {
+		return nil, err
 	}
 
 	// searchResult is of type SearchResult and returns hits, suggestions,
 	// and all kinds of other information from Elasticsearch.
-	fmt.Printf("Query took %d milliseconds\n", searchResult.TookInMillis)
-	// TotalHits is another convenience function that works even when something goes wrong.
-	fmt.Printf("Found a total of %d post\n", searchResult.TotalHits())
+	fmt.Printf("Query took %d milliseconds.\n", searchResult.TookInMillis)
 
 	// Each is a convenience function that iterates over hits in a search result.
 	// It makes sure you don't need to check for nil values in the response.
-	// However, it ignores errors in serialization.
-	var typ Post
-	var ps []Post
-	for _, item := range searchResult.Each(reflect.TypeOf(typ)) { // instance of
-		p := item.(Post) // p = (Post) item
-		fmt.Printf("Post by %s: %s at lat %v and lon %v\n", p.User, p.Message, p.Location.Lat, p.Location.Lon)
-		// TODO(): Perform filtering based on keywords such as web spam etc.
-		if !containsFilteredWords(&p.Message) {
-			ps = append(ps, p)
+	// However, it ignores errors in serialization. If you want full control
+	// over iterating the hits, see below.
+	var ptyp Post
+	var posts []Post
+	for _, item := range searchResult.Each(reflect.TypeOf(ptyp)) {
+		if p, ok := item.(Post); ok {
+			posts = append(posts, p)
 		}
 	}
-	js, err := json.Marshal(ps)
+
+	return posts, nil
+}
+
+func saveToGCS(r io.Reader, bucketName, objectName string) (*storage.ObjectAttrs, error) {
+	ctx := context.Background()
+
+	// Creates a client.
+	client, err := storage.NewClient(ctx)
 	if err != nil {
-		m := fmt.Sprintf("Failed to parse post object %v", err)
-		fmt.Println(m)
-		http.Error(w, m, http.StatusInternalServerError)
+		return nil, err
+	}
+
+	bucket := client.Bucket(bucketName)
+	if _, err := bucket.Attrs(ctx); err != nil {
+		return nil, err
+	}
+
+	object := bucket.Object(objectName)
+	wc := object.NewWriter(ctx)
+	if _, err = io.Copy(wc, r); err != nil {
+		return nil, err
+	}
+	if err := wc.Close(); err != nil {
+		return nil, err
+	}
+
+	if err = object.ACL().Set(ctx, storage.AllUsers, storage.RoleReader); err != nil {
+		return nil, err
+	}
+
+	attrs, err := object.Attrs(ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	fmt.Printf("Image is saved to GCS: %s.\n", attrs.MediaLink)
+	return attrs, nil
+}
+
+// Save a post to BigTable
+func saveToBigTable(p *Post, id string) {
+	ctx := context.Background()
+	bt_client, err := bigtable.NewClient(ctx, BIGTABLE_PROJECT_ID, BT_INSTANCE, option.WithCredentialsFile("Around-87a9a676703e.json"))
+	if err != nil {
+		panic(err)
 		return
 	}
+	tbl := bt_client.Open("post")
+	mut := bigtable.NewMutation()
+	t := bigtable.Now()
+	mut.Set("post", "user", t, []byte(p.User))
+	mut.Set("post", "message", t, []byte(p.Message))
+	mut.Set("location", "lat", t, []byte(strconv.FormatFloat(p.Location.Lat, 'f', -1, 64)))
+	mut.Set("location", "lon", t, []byte(strconv.FormatFloat(p.Location.Lon, 'f', -1, 64)))
 
-	if ENABLE_MEMCACHE {
-		// Set the cache expiration to be 30 seconds
-		err := rs_client.Set(key, string(js), time.Second*30).Err()
-		if err != nil {
-			fmt.Printf("Redis cannot save the key %s as %v.\n", key, err)
-		}
+	err = tbl.Apply(ctx, id, mut)
+	if err != nil {
+		panic(err)
+		return
 	}
-
-	w.Write(js)
+	fmt.Printf("Post is saved to BigTable: %s.\n", p.Message)
 }
 
 func handlerCluster(w http.ResponseWriter, r *http.Request) {
@@ -428,43 +434,4 @@ func handlerCluster(w http.ResponseWriter, r *http.Request) {
 	}
 
 	w.Write(js)
-}
-
-// Read a post from ElasticSearch
-func readFromES(lat, lon float64, ran string) ([]Post, error) {
-	client, err := elastic.NewClient(elastic.SetURL(ES_URL), elastic.SetSniff(false))
-	if err != nil {
-		return nil, err
-	}
-
-	query := elastic.NewGeoDistanceQuery("location")
-	query = query.Distance(ran).Lat(lat).Lon(lon)
-
-	searchResult, err := client.Search().
-		Index(POST_INDEX).
-		Query(query).
-		Size(100).
-		Pretty(true).
-		Do(context.Background())
-	if err != nil {
-		return nil, err
-	}
-
-	// searchResult is of type SearchResult and returns hits, suggestions,
-	// and all kinds of other information from Elasticsearch.
-	fmt.Printf("Query took %d milliseconds.\n", searchResult.TookInMillis)
-
-	// Each is a convenience function that iterates over hits in a search result.
-	// It makes sure you don't need to check for nil values in the response.
-	// However, it ignores errors in serialization. If you want full control
-	// over iterating the hits, see below.
-	var ptyp Post
-	var posts []Post
-	for _, item := range searchResult.Each(reflect.TypeOf(ptyp)) {
-		if p, ok := item.(Post); ok {
-			posts = append(posts, p)
-		}
-	}
-
-	return posts, nil
 }
