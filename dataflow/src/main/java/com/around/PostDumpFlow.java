@@ -20,9 +20,12 @@ import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
+// Bigtable -> [Dataflow] -> BigQuery
 public class PostDumpFlow {
 
-    private static final String PROJECT_ID = "Your Project_ID";
+    private static final String PROJECT_ID = "project-around-123456";
+    private static final String BIGTABLE_ID = "around-post";
+    private static final String BIGQUERY_ID = "post_analysis";
     private static final Charset UTF8_CHARSET = Charset.forName("UTF-8");
 
     public static void main(String[] args) {
@@ -31,11 +34,8 @@ public class PostDumpFlow {
 
         Pipeline p = Pipeline.create(options);
 
-        CloudBigtableScanConfiguration config = new CloudBigtableScanConfiguration.Builder()
-                .withProjectId(PROJECT_ID)
-                .withInstanceId("around-post")
-                .withTableId("post")
-                .build();
+        CloudBigtableScanConfiguration config = new CloudBigtableScanConfiguration.Builder().withProjectId(PROJECT_ID)
+                .withInstanceId(BIGTABLE_ID).withTableId("post").build();
 
         PCollection<Result> btRows = p.apply(Read.from(CloudBigtableIO.read(config)));
         PCollection<TableRow> bqRows = btRows.apply(ParDo.of(new DoFn<Result, TableRow>() {
@@ -44,10 +44,11 @@ public class PostDumpFlow {
                 Result result = c.element();
                 String postId = new String(result.getRow());
                 String user = new String(result.getValue(Bytes.toBytes("post"), Bytes.toBytes("user")), UTF8_CHARSET);
-                String message = new String(result.getValue(Bytes.toBytes("post"), Bytes.toBytes("message")), UTF8_CHARSET);
+                String message = new String(result.getValue(Bytes.toBytes("post"), Bytes.toBytes("message")),
+                        UTF8_CHARSET);
                 String lat = new String(result.getValue(Bytes.toBytes("location"), Bytes.toBytes("lat")), UTF8_CHARSET);
                 String lon = new String(result.getValue(Bytes.toBytes("location"), Bytes.toBytes("lon")), UTF8_CHARSET);
-                TableRow row = new TableRow();//BQ Table row object
+                TableRow row = new TableRow();// BQ Table row object
                 row.set("postId", postId);
                 row.set("user", user);
                 row.set("message", message);
@@ -65,11 +66,8 @@ public class PostDumpFlow {
         fields.add(new TableFieldSchema().setName("lon").setType("FLOAT"));
 
         TableSchema schema = new TableSchema().setFields(fields);
-        bqRows.apply(BigQueryIO.Write
-                .named("Write")
-                .to(PROJECT_ID + ":" + "post_analysis" + "." + "daily_dump_1")
-                .withSchema(schema)
-                .withWriteDisposition(BigQueryIO.Write.WriteDisposition.WRITE_TRUNCATE)
+        bqRows.apply(BigQueryIO.Write.named("Write").to(PROJECT_ID + ":" + BIGQUERY_ID + "." + "daily_dump_1")
+                .withSchema(schema).withWriteDisposition(BigQueryIO.Write.WriteDisposition.WRITE_TRUNCATE)
                 .withCreateDisposition(BigQueryIO.Write.CreateDisposition.CREATE_IF_NEEDED));
 
         p.run();
