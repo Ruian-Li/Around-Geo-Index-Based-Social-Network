@@ -2,7 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="103b8b9b-9621-42c1-bc2d-2b53eb5210fd" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/dataflow/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/dataflow/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/around-web/src/components/Main.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/around-web/src/components/Register.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/around-web/src/components/TopBar.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/around-web/src/constants.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/around-web/src/styles/Main.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/around-web/src/styles/Register.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/around-web/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/around-web/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/around-web/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/around-web/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/around-web/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/around-web/src/styles/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/around-web/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/around-web/src/components/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/around-web/src/App.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/around-web/src/tests/App.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/around-web/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/around-web/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/around-web/src/logo.svg" beforeDir="false" afterPath="$PROJECT_DIR$/around-web/src/assets/images/logo.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/around-web/src/serviceWorker.js" beforeDir="false" afterPath="$PROJECT_DIR$/around-web/src/registerServiceWorker.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -17,55 +31,91 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/service/main.go">
+        <entry file="file://$PROJECT_DIR$/dataflow/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6540">
-              <caret line="436" column="1" selection-start-line="436" selection-start-column="1" selection-end-line="436" selection-end-column="1" />
+            <state relative-caret-position="212">
+              <caret line="63" column="34" selection-start-line="63" selection-start-column="34" selection-end-line="63" selection-end-column="34" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/service/user.go">
+        <entry file="file://$PROJECT_DIR$/around-web/src/index.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="534">
-              <caret line="164" column="1" selection-start-line="164" selection-start-column="1" selection-end-line="164" selection-end-column="1" />
+            <state relative-caret-position="270">
+              <caret line="18" selection-start-line="18" selection-end-line="18" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dataflow/src/main/java/com/around/PostDumpFlow.java">
+        <entry file="file://$PROJECT_DIR$/around-web/src/components/Register.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="125">
-              <caret line="50" column="58" selection-start-line="50" selection-start-column="58" selection-end-line="50" selection-end-column="58" />
+            <state relative-caret-position="2040">
+              <caret line="136" selection-start-line="136" selection-end-line="136" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/around-web/src/components/TopBar.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="14" selection-start-line="14" selection-end-line="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/around-web/src/styles/App.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="540">
+              <caret line="36" selection-start-line="36" selection-end-line="36" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/around-web/src/styles/Main.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="4" selection-start-line="4" selection-end-line="4" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/around-web/src/styles/Register.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="4" column="1" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/dataflow/pom.xml">
+        <entry file="file://$PROJECT_DIR$/around-web/src/constants.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="653">
-              <caret line="252" column="10" selection-start-line="252" selection-start-column="10" selection-end-line="252" selection-end-column="10" />
+            <state relative-caret-position="30">
+              <caret line="2" selection-start-line="2" selection-end-line="2" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/service/ml.go">
+        <entry file="file://$PROJECT_DIR$/around-web/src/components/App.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="495">
-              <caret line="33" column="41" lean-forward="true" selection-start-line="33" selection-start-column="41" selection-end-line="33" selection-end-column="41" />
+            <state relative-caret-position="270">
+              <caret line="18" selection-start-line="18" selection-end-line="18" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/README.md">
+        <entry file="file://$PROJECT_DIR$/around-web/src/components/Main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="52" selection-start-column="52" selection-end-column="52" />
+            <state relative-caret-position="195">
+              <caret line="13" selection-start-line="13" selection-end-line="13" />
             </state>
           </provider>
         </entry>
@@ -84,17 +134,19 @@
         <option value="$PROJECT_DIR$/service/user.go" />
         <option value="$PROJECT_DIR$/dataflow/src/main/java/com/around/PostDumpFlow.java" />
         <option value="$PROJECT_DIR$/dataflow/pom.xml" />
+        <option value="$PROJECT_DIR$/around-web/src/components/App.js" />
+        <option value="$PROJECT_DIR$/around-web/src/components/Main.js" />
+        <option value="$PROJECT_DIR$/around-web/src/components/Register.js" />
+        <option value="$PROJECT_DIR$/around-web/src/components/TopBar.js" />
+        <option value="$PROJECT_DIR$/around-web/src/styles/App.css" />
+        <option value="$PROJECT_DIR$/around-web/src/styles/Main.css" />
+        <option value="$PROJECT_DIR$/around-web/src/styles/Register.css" />
+        <option value="$PROJECT_DIR$/around-web/src/index.css" />
+        <option value="$PROJECT_DIR$/around-web/src/constants.js" />
       </list>
     </option>
   </component>
-  <component name="ProjectConfigurationFiles">
-    <option name="files">
-      <list>
-        <option value="$PROJECT_DIR$/.idea/vcs.xml" />
-      </list>
-    </option>
-  </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" fullScreen="true">
     <option name="x" value="578" />
     <option name="y" value="116" />
     <option name="width" value="1260" />
@@ -112,6 +164,31 @@
             <path>
               <item name="Around" type="b2602c69:ProjectViewProjectNode" />
               <item name="Around" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Around" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Around" type="462c0819:PsiDirectoryNode" />
+              <item name="around-web" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Around" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Around" type="462c0819:PsiDirectoryNode" />
+              <item name="around-web" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Around" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Around" type="462c0819:PsiDirectoryNode" />
+              <item name="around-web" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Around" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Around" type="462c0819:PsiDirectoryNode" />
+              <item name="around-web" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="styles" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Around" type="b2602c69:ProjectViewProjectNode" />
@@ -172,7 +249,17 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/around-web/src/tests" />
+      <recent name="$PROJECT_DIR$/around-web/src/components" />
+      <recent name="$PROJECT_DIR$/around-web/src/styles" />
+      <recent name="$PROJECT_DIR$/around-web/src/assets/images" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -200,10 +287,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1280" height="800" extended-state="0" />
+    <frame x="650" y="0" width="630" height="800" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17447495" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.36734694" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -230,6 +317,10 @@
       <window_info anchor="right" id="Palette&#9;" order="7" />
     </layout>
   </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.css" />
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.js" />
+  </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
@@ -241,7 +332,7 @@
     <entry file="file://$PROJECT_DIR$/service/ml.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="495">
-          <caret line="33" column="41" lean-forward="true" selection-start-line="33" selection-start-column="41" selection-end-line="33" selection-end-column="41" />
+          <caret line="33" column="41" selection-start-line="33" selection-start-column="41" selection-end-line="33" selection-end-column="41" />
         </state>
       </provider>
     </entry>
@@ -268,8 +359,71 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/dataflow/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="653">
-          <caret line="252" column="10" selection-start-line="252" selection-start-column="10" selection-end-line="252" selection-end-column="10" />
+        <state relative-caret-position="212">
+          <caret line="63" column="34" selection-start-line="63" selection-start-column="34" selection-end-line="63" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/around-web/src/components/App.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" selection-start-line="18" selection-end-line="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/around-web/src/components/Main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" selection-start-line="13" selection-end-line="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/around-web/src/components/Register.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2040">
+          <caret line="136" selection-start-line="136" selection-end-line="136" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/around-web/src/components/TopBar.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/around-web/src/styles/App.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="36" selection-start-line="36" selection-end-line="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/around-web/src/styles/Main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/around-web/src/styles/Register.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="1" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/around-web/src/index.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" selection-start-line="18" selection-end-line="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/around-web/src/constants.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
         </state>
       </provider>
     </entry>
