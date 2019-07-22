@@ -242,13 +242,12 @@
       <artifactId>google-cloud-dataflow-java-sdk-all</artifactId>
       <version>1.9.1</version>
     </dependency>
+
     <dependency>
       <groupId>com.google.cloud.bigtable</groupId>
       <artifactId>bigtable-hbase-dataflow</artifactId>
       <version>0.9.5.1</version>
     </dependency>
-
-
 
   </dependencies>
 </project>

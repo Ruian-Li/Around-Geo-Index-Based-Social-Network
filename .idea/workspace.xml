@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="103b8b9b-9621-42c1-bc2d-2b53eb5210fd" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/dataflow/src/main/java/com/around/PostDumpFlow.java" beforeDir="false" afterPath="$PROJECT_DIR$/dataflow/src/main/java/com/around/PostDumpFlow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataflow/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/dataflow/pom.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -34,11 +34,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dataflow/src/main/java/com/around/PostDumpFlow.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="485">
-              <caret line="74" column="1" selection-start-line="74" selection-start-column="1" selection-end-line="74" selection-end-column="1" />
+            <state relative-caret-position="125">
+              <caret line="50" column="58" selection-start-line="50" selection-start-column="58" selection-end-line="50" selection-end-column="58" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/dataflow/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="653">
+              <caret line="252" column="10" selection-start-line="252" selection-start-column="10" selection-end-line="252" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -74,6 +83,7 @@
         <option value="$PROJECT_DIR$/service/main.go" />
         <option value="$PROJECT_DIR$/service/user.go" />
         <option value="$PROJECT_DIR$/dataflow/src/main/java/com/around/PostDumpFlow.java" />
+        <option value="$PROJECT_DIR$/dataflow/pom.xml" />
       </list>
     </option>
   </component>
@@ -190,10 +200,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="578" y="116" width="1260" height="681" extended-state="0" />
+    <frame x="0" y="0" width="1280" height="800" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1773399" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17447495" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -251,8 +261,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/dataflow/src/main/java/com/around/PostDumpFlow.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="485">
-          <caret line="74" column="1" selection-start-line="74" selection-start-column="1" selection-end-line="74" selection-end-column="1" />
+        <state relative-caret-position="125">
+          <caret line="50" column="58" selection-start-line="50" selection-start-column="58" selection-end-line="50" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dataflow/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="653">
+          <caret line="252" column="10" selection-start-line="252" selection-start-column="10" selection-end-line="252" selection-end-column="10" />
         </state>
       </provider>
     </entry>
