@@ -2,24 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="103b8b9b-9621-42c1-bc2d-2b53eb5210fd" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/around-web/src/components/Gallery.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/around-web/src/components/Home.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/around-web/src/components/Login.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/around-web/src/styles/Home.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/around-web/src/styles/Login.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/around-web/src/styles/TopBar.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/around-web/src/components/CreatePostButton.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/around-web/src/components/CreatePostForm.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/around-web/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/around-web/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/around-web/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/around-web/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/around-web/src/components/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/around-web/src/components/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/around-web/src/components/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/around-web/src/components/Main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/around-web/src/components/Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/around-web/src/components/Register.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/around-web/src/components/TopBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/around-web/src/components/TopBar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/around-web/src/components/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/around-web/src/components/Home.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/around-web/src/constants.js" beforeDir="false" afterPath="$PROJECT_DIR$/around-web/src/constants.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/around-web/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/around-web/src/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/around-web/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/around-web/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/around-web/src/registerServiceWorker.js" beforeDir="false" afterPath="$PROJECT_DIR$/around-web/src/serviceWorker.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/around-web/src/styles/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/around-web/src/styles/App.css" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -33,24 +20,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/around-web/src/components/TopBar.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="21" selection-start-line="21" selection-end-line="21" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/around-web/src/styles/App.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="570">
-              <caret line="38" selection-start-line="38" selection-end-line="38" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/around-web/src/styles/Login.css">
           <provider selected="true" editor-type-id="text-editor">
@@ -78,11 +47,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/around-web/src/constants.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" selection-start-line="10" selection-end-line="10" />
+            <state relative-caret-position="135">
+              <caret line="9" selection-start-line="9" selection-end-line="9" />
             </state>
           </provider>
         </entry>
@@ -109,7 +78,25 @@
         <entry file="file://$PROJECT_DIR$/around-web/src/components/Home.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="615">
-              <caret line="103" selection-start-line="103" selection-end-line="103" />
+              <caret line="102" selection-start-line="102" selection-end-line="102" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/around-web/src/components/CreatePostButton.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="675">
+              <caret line="86" selection-start-line="86" selection-end-line="86" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/around-web/src/components/CreatePostForm.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="675">
+              <caret line="62" selection-start-line="62" selection-end-line="62" />
             </state>
           </provider>
         </entry>
@@ -150,13 +137,15 @@
         <option value="$PROJECT_DIR$/around-web/src/index.css" />
         <option value="$PROJECT_DIR$/around-web/src/index.js" />
         <option value="$PROJECT_DIR$/around-web/src/styles/Home.css" />
-        <option value="$PROJECT_DIR$/around-web/src/components/Home.js" />
         <option value="$PROJECT_DIR$/around-web/src/components/Gallery.js" />
         <option value="$PROJECT_DIR$/around-web/src/constants.js" />
+        <option value="$PROJECT_DIR$/around-web/src/components/Home.js" />
+        <option value="$PROJECT_DIR$/around-web/src/components/CreatePostButton.js" />
+        <option value="$PROJECT_DIR$/around-web/src/components/CreatePostForm.js" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" fullScreen="true">
     <option name="x" value="578" />
     <option name="y" value="116" />
     <option name="width" value="1260" />
@@ -465,13 +454,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/around-web/src/components/Home.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="615">
-          <caret line="103" selection-start-line="103" selection-end-line="103" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/around-web/src/components/Gallery.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="675">
@@ -481,8 +463,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/around-web/src/constants.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" selection-start-line="10" selection-end-line="10" />
+        <state relative-caret-position="135">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/around-web/src/components/Home.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="615">
+          <caret line="102" selection-start-line="102" selection-end-line="102" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/around-web/src/components/CreatePostButton.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="675">
+          <caret line="86" selection-start-line="86" selection-end-line="86" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/around-web/src/components/CreatePostForm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="675">
+          <caret line="62" selection-start-line="62" selection-end-line="62" />
         </state>
       </provider>
     </entry>
