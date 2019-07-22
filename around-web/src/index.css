@@ -1,6 +1,10 @@
+
 @import '~antd/dist/antd.css';
+@import 'styles/App.css';
 @import 'styles/Main.css';
 @import 'styles/Register.css';
+@import 'styles/Login.css';
+@import 'styles/TopBar.css';
 
 body {
  margin: 0;

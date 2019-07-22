@@ -2,21 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="103b8b9b-9621-42c1-bc2d-2b53eb5210fd" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/around-web/src/components/Main.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/around-web/src/components/Register.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/around-web/src/components/TopBar.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/around-web/src/constants.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/around-web/src/styles/Main.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/around-web/src/styles/Register.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/around-web/src/components/Gallery.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/around-web/src/components/Home.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/around-web/src/components/Login.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/around-web/src/styles/Home.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/around-web/src/styles/Login.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/around-web/src/styles/TopBar.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/around-web/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/around-web/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/around-web/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/around-web/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/around-web/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/around-web/src/styles/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/around-web/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/around-web/src/components/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/around-web/src/App.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/around-web/src/tests/App.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/around-web/src/components/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/around-web/src/components/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/around-web/src/components/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/around-web/src/components/Main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/around-web/src/components/Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/around-web/src/components/Register.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/around-web/src/components/TopBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/around-web/src/components/TopBar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/around-web/src/constants.js" beforeDir="false" afterPath="$PROJECT_DIR$/around-web/src/constants.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/around-web/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/around-web/src/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/around-web/src/logo.svg" beforeDir="false" afterPath="$PROJECT_DIR$/around-web/src/assets/images/logo.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/around-web/src/serviceWorker.js" beforeDir="false" afterPath="$PROJECT_DIR$/around-web/src/registerServiceWorker.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/around-web/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/around-web/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/around-web/src/registerServiceWorker.js" beforeDir="false" afterPath="$PROJECT_DIR$/around-web/src/serviceWorker.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/around-web/src/styles/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/around-web/src/styles/App.css" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -31,37 +34,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dataflow/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="212">
-              <caret line="63" column="34" selection-start-line="63" selection-start-column="34" selection-end-line="63" selection-end-column="34" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/around-web/src/index.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="18" selection-start-line="18" selection-end-line="18" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/around-web/src/components/Register.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2040">
-              <caret line="136" selection-start-line="136" selection-end-line="136" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/around-web/src/components/TopBar.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" selection-start-line="14" selection-end-line="14" />
+            <state relative-caret-position="315">
+              <caret line="21" selection-start-line="21" selection-end-line="21" />
             </state>
           </provider>
         </entry>
@@ -69,26 +45,35 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/around-web/src/styles/App.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="36" selection-start-line="36" selection-end-line="36" />
+            <state relative-caret-position="570">
+              <caret line="38" selection-start-line="38" selection-end-line="38" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/around-web/src/styles/Main.css">
+        <entry file="file://$PROJECT_DIR$/around-web/src/styles/Login.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" selection-start-line="4" selection-end-line="4" />
+            <state relative-caret-position="180">
+              <caret line="12" selection-start-line="12" selection-end-line="12" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/around-web/src/styles/Register.css">
+        <entry file="file://$PROJECT_DIR$/around-web/src/styles/TopBar.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="1" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
+            <state relative-caret-position="75">
+              <caret line="5" selection-start-line="5" selection-end-line="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/around-web/src/index.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="330">
+              <caret line="22" selection-start-line="22" selection-end-line="22" />
             </state>
           </provider>
         </entry>
@@ -96,14 +81,14 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/around-web/src/constants.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" selection-start-line="2" selection-end-line="2" />
+            <state relative-caret-position="150">
+              <caret line="10" selection-start-line="10" selection-end-line="10" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/around-web/src/components/App.js">
+        <entry file="file://$PROJECT_DIR$/around-web/src/index.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="270">
               <caret line="18" selection-start-line="18" selection-end-line="18" />
@@ -112,10 +97,28 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/around-web/src/components/Main.js">
+        <entry file="file://$PROJECT_DIR$/around-web/src/styles/Home.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="13" selection-start-line="13" selection-end-line="13" />
+            <state relative-caret-position="75">
+              <caret line="5" selection-start-line="5" selection-end-line="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/around-web/src/components/Home.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="615">
+              <caret line="103" selection-start-line="103" selection-end-line="103" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/around-web/src/components/Gallery.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="675">
+              <caret line="64" selection-start-line="64" selection-end-line="64" />
             </state>
           </provider>
         </entry>
@@ -134,19 +137,26 @@
         <option value="$PROJECT_DIR$/service/user.go" />
         <option value="$PROJECT_DIR$/dataflow/src/main/java/com/around/PostDumpFlow.java" />
         <option value="$PROJECT_DIR$/dataflow/pom.xml" />
+        <option value="$PROJECT_DIR$/around-web/src/styles/Main.css" />
+        <option value="$PROJECT_DIR$/around-web/src/styles/Register.css" />
         <option value="$PROJECT_DIR$/around-web/src/components/App.js" />
+        <option value="$PROJECT_DIR$/around-web/src/components/Login.js" />
         <option value="$PROJECT_DIR$/around-web/src/components/Main.js" />
         <option value="$PROJECT_DIR$/around-web/src/components/Register.js" />
         <option value="$PROJECT_DIR$/around-web/src/components/TopBar.js" />
         <option value="$PROJECT_DIR$/around-web/src/styles/App.css" />
-        <option value="$PROJECT_DIR$/around-web/src/styles/Main.css" />
-        <option value="$PROJECT_DIR$/around-web/src/styles/Register.css" />
+        <option value="$PROJECT_DIR$/around-web/src/styles/Login.css" />
+        <option value="$PROJECT_DIR$/around-web/src/styles/TopBar.css" />
         <option value="$PROJECT_DIR$/around-web/src/index.css" />
+        <option value="$PROJECT_DIR$/around-web/src/index.js" />
+        <option value="$PROJECT_DIR$/around-web/src/styles/Home.css" />
+        <option value="$PROJECT_DIR$/around-web/src/components/Home.js" />
+        <option value="$PROJECT_DIR$/around-web/src/components/Gallery.js" />
         <option value="$PROJECT_DIR$/around-web/src/constants.js" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" fullScreen="true">
+  <component name="ProjectFrameBounds">
     <option name="x" value="578" />
     <option name="y" value="116" />
     <option name="width" value="1260" />
@@ -364,41 +374,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/around-web/src/components/App.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" selection-start-line="18" selection-end-line="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/around-web/src/components/Main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" selection-start-line="13" selection-end-line="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/around-web/src/components/Register.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2040">
-          <caret line="136" selection-start-line="136" selection-end-line="136" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/around-web/src/components/TopBar.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" selection-start-line="14" selection-end-line="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/around-web/src/styles/App.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="36" selection-start-line="36" selection-end-line="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/around-web/src/styles/Main.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -413,17 +388,101 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/around-web/src/components/App.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="30" column="19" selection-start-line="30" selection-start-column="19" selection-end-line="30" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/around-web/src/components/Login.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1035">
+          <caret line="69" selection-start-line="69" selection-end-line="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/around-web/src/components/Main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="29" selection-start-line="29" selection-end-line="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/around-web/src/components/Register.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="675">
+          <caret line="144" selection-start-line="144" selection-end-line="144" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/around-web/src/components/TopBar.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" selection-start-line="21" selection-end-line="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/around-web/src/styles/App.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="38" selection-start-line="38" selection-end-line="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/around-web/src/styles/Login.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/around-web/src/styles/TopBar.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/around-web/src/index.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" selection-start-line="22" selection-end-line="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/around-web/src/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="18" selection-start-line="18" selection-end-line="18" />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/around-web/src/styles/Home.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/around-web/src/components/Home.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="615">
+          <caret line="103" selection-start-line="103" selection-end-line="103" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/around-web/src/components/Gallery.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="675">
+          <caret line="64" selection-start-line="64" selection-end-line="64" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/around-web/src/constants.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" selection-start-line="2" selection-end-line="2" />
+        <state relative-caret-position="150">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
         </state>
       </provider>
     </entry>
