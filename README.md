@@ -3,8 +3,6 @@
 - Utilized ElasticSearch (GCE) to provide geo-location-based search functions such that users can search nearby posts within a distance (e.g. 200km)
 - Used Google Dataflow to implement a daily dump of posts to BigQuery table for offline analysis
 - Implemented basic token-based registration/login/logout flow with React Router v4 and server-side user authentication with JWT
-- Demo: http://recordit.co/awrQb1zn2I
-- Link: https://around-75015.appspot.com/
 
 
 # Overview of project
